@@ -1,0 +1,13 @@
+{
+  "name": "yt.tonny.tw",
+  "version": "1.0.0",
+  "description": "Hacker News style YouTube video collection deployed on Cloudflare Pages",
+  "main": "scripts/build.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "add": "node scripts/add-video.js"
+  },
+  "keywords": ["youtube", "curation", "hacker-news", "cloudflare-pages"],
+  "author": "Tonny",
+  "license": "MIT"
+}
