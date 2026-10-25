@@ -1,5 +1,15 @@
 [
   {
+    "id": "zjkBMFhNj_g",
+    "title": "[1hr Talk] Intro to Large Language Models",
+    "author": "Andrej Karpathy",
+    "authorUrl": "https://www.youtube.com/@AndrejKarpathy",
+    "thumbnailUrl": "https://i.ytimg.com/vi/zjkBMFhNj_g/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+    "addedAt": "2026-10-25T10:17:50.222Z",
+    "points": 55
+  },
+  {
     "id": "gRhM1h10T3U",
     "title": "Gemini 4 Argon: 10 incredible AI demos (1M token output in action)",
     "author": "Google Cloud Tech",
