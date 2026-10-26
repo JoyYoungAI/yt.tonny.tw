@@ -14,8 +14,11 @@ Hacker News 風格的 YouTube 影片精選靜態網站，自動部署至 Cloudfl
 ## 🚀 快速新增影片
 
 ```bash
-# 新增單一影片並自動重建
+# 新增單一影片並自動重建（預設具備防呆機制：若已收錄則提示並略過，不重複發布）
 node scripts/add-video.js "https://youtu.be/ddAnghj8HpE?si=3tgCla-1ddLO5zZB"
+
+# 若需要強制更新已存在影片的標題或縮圖：
+node scripts/add-video.js "https://youtu.be/ddAnghj8HpE" --force
 
 # 手動重建靜態網站 (產出至 dist/)
 npm run build

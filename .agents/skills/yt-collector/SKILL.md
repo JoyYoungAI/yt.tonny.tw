@@ -1,6 +1,6 @@
 ---
 name: yt-collector
-description: YouTube 影片收集與自動發布技能。當使用者貼上 YouTube 影片網址（如 youtu.be 或 youtube.com）或要求收錄影片到 yt.tonny.tw 時觸發，自動擷取影片縮圖與資訊、更新 Hacker News 風格靜態網站，並自動 Commit & Push 觸發 Cloudflare Pages 部署。
+description: YouTube 影片收集與自動發布技能。當使用者貼上 YouTube 影片網址（如 youtu.be 或 youtube.com）或要求收錄影片到 yt.tonny.tw 時觸發，自動擷取影片縮圖與資訊、更新 Hacker News 風格靜態網站，並自動 Commit & Push 觸發 Cloudflare Pages 部署。具備重複影片智慧偵測與防呆機制。
 ---
 
 # YouTube 影片收集與自動發布 (yt-collector Skill)
@@ -22,7 +22,16 @@ description: YouTube 影片收集與自動發布技能。當使用者貼上 YouT
 ```bash
 node scripts/add-video.js "<YOUTUBE_URL>"
 ```
-> 註：該腳本會自動防止重複新增，並在資料寫入後自動調用 `scripts/build.js` 重新產出靜態網站。
+
+#### 分支 A：若影片已存在（Exit Code 2 或輸出含 `[ALREADY_EXISTS]`）
+1. **停止後續流程**：**切勿**執行 `git add`、`git commit` 或 `git push`（避免無效 commit 或引發 git error）。
+2. **回報使用者**：
+   - 友善告知：「這部影片先前已經收錄過囉！」
+   - 列出當初收錄的時間、影片標題、頻道作者與縮圖。
+   - 提供線上站台 [yt.tonny.tw](https://yt.tonny.tw) 連結，並提示使用者若需要強制更新資訊可使用 `--force`。
+
+#### 分支 B：若為新影片成功加入（Exit Code 0）
+執行第三步與第四步。
 
 ### 第三步：提交並推送至 GitHub
 將變更提交並推送到遠端儲存庫，觸發 GitHub Actions 與 Cloudflare Pages 自動部署：

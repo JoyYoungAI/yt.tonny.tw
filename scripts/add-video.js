@@ -70,9 +70,12 @@ async function fetchMetadata(videoId) {
 }
 
 async function main() {
-  const urlArg = process.argv[2];
+  const args = process.argv.slice(2);
+  const isForce = args.includes('--force') || args.includes('-f') || args.includes('--update');
+  const urlArg = args.find(arg => !arg.startsWith('-'));
+
   if (!urlArg) {
-    console.error('Usage: node scripts/add-video.js <YouTube URL or ID>');
+    console.error('Usage: node scripts/add-video.js <YouTube URL or ID> [--force]');
     process.exit(1);
   }
 
@@ -96,6 +99,18 @@ async function main() {
 
   // Check if exists
   const existingIndex = videos.findIndex(v => v.id === videoId);
+  if (existingIndex >= 0 && !isForce) {
+    const existing = videos[existingIndex];
+    console.log(`[ALREADY_EXISTS] 影片已在收藏清單中 (收錄時間: ${existing.addedAt})：`);
+    console.log(`- 標題: ${existing.title}`);
+    console.log(`- 頻道: ${existing.author}`);
+    console.log(`- 縮圖: ${existing.thumbnailUrl}`);
+    console.log(`- 網址: ${existing.url}`);
+    console.log(`- 目前推文: ${existing.points} points`);
+    console.log(`💡 提示：若欲強制更新中繼資料或縮圖，可加上 --force 參數。`);
+    process.exit(2);
+  }
+
   const metadata = await fetchMetadata(videoId);
 
   const videoEntry = {
@@ -110,7 +125,7 @@ async function main() {
   };
 
   if (existingIndex >= 0) {
-    console.log(`[2/3] Video already exists. Updating metadata...`);
+    console.log(`[2/3] Force updating metadata for existing video: "${videoEntry.title}"...`);
     videos[existingIndex] = { ...videos[existingIndex], ...videoEntry };
   } else {
     console.log(`[2/3] Adding new video: "${videoEntry.title}" by ${videoEntry.author}`);
