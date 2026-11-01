@@ -1,5 +1,15 @@
 [
   {
+    "id": "N3tqEBWFD00",
+    "title": "Optimize Your Prompts with Amazon Bedrock",
+    "author": "AWS Developers",
+    "authorUrl": "https://www.youtube.com/@awsdevelopers",
+    "thumbnailUrl": "https://i.ytimg.com/vi/N3tqEBWFD00/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=N3tqEBWFD00",
+    "addedAt": "2026-11-01T11:32:21.979Z",
+    "points": 23
+  },
+  {
     "id": "u4n558Ul6w0",
     "title": "Introducing TorchTPU: Native PyTorch on Google Cloud TPUs",
     "author": "Google Cloud Tech",
