@@ -1,5 +1,15 @@
 [
   {
+    "id": "EkdIZXDnRK8",
+    "title": "Context-Aware Coding: Give AI Agents the Right Context",
+    "author": "IBM Technology",
+    "authorUrl": "https://www.youtube.com/@IBMTechnology",
+    "thumbnailUrl": "https://i.ytimg.com/vi/EkdIZXDnRK8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=EkdIZXDnRK8",
+    "addedAt": "2026-11-03T16:10:06.128Z",
+    "points": 42
+  },
+  {
     "id": "p2vmRfShi_U",
     "title": "CodeMender: AI powered vulnerability fixes right in GitHub PRs",
     "author": "Google Cloud Tech",
